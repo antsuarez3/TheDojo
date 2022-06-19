@@ -20,7 +20,7 @@ import Sidebar from './components/Sidebar'
 import OnlineUsers from './components/OnlineUsers'
 
 function App() {
-  const { user, authIsReady } = useAuthContext()
+  const { authIsReady, user } = useAuthContext()
 
   return (
     <>
@@ -45,11 +45,11 @@ function App() {
                 />
                 <Route
                   path='/login'
-                  element={!user ? <Login /> : <Navigate to='/' />}
+                  element={user ? <Navigate to='/' /> : <Login />}
                 />
                 <Route
                   path='/signup'
-                  element={!user ? <Signup /> : <Navigate to='/' />}
+                  element={user ? <Navigate to='/' /> : <Signup />}
                 />
               </Routes>
             </div>
